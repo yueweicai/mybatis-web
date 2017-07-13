@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.orilore.mapper.SizeMapper">
+	<resultMap type="Size" id="sizeResultMap">
+		<id column="id" property="id"/>
+		<result column="pid" property="pid"/>
+		<result column="sname" property="sname"/>
+	</resultMap>
+	<select id="selectOne" parameterType="int" resultType="Size">
+		select * from size where id=#{id}
+	</select>
+	<select id="select" resultMap="sizeResultMap">
+		select * from size
+	</select>
+	<insert id="insert" parameterType="Size">
+		insert into size(pid,sname) values(#{pid},#{sname})
+	</insert>
+	<delete id="delete" parameterType="int">
+		delete from size where id=#{id}
+	</delete>
+	<update id="update" parameterType="Size">
+		update size set pid=#{pid},sname=#{sname} where id=#{id}
+	</update>
+</mapper>

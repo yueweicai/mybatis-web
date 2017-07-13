@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.orilore.mapper.StoreMapper">
+	<resultMap type="Store" id="storeResultMap">
+		<id column="id" property="id"/>
+		<result column="pid" property="pid"/>
+		<result column="sid" property="sid"/>
+		<result column="quantity" property="quantity"/>
+	</resultMap>
+	<select id="selectOne" parameterType="int" resultType="Store">
+		select * from store where id=#{id}
+	</select>
+	<select id="select" resultMap="storeResultMap">
+		select * from store
+	</select>
+	<insert id="insert" parameterType="Store">
+		insert into store(pid,sid,quantity) values(#{pid},#{sid},#{quantity})
+	</insert>
+	<delete id="delete" parameterType="int">
+		delete from store where id=#{id}
+	</delete>
+	<update id="update" parameterType="Store">
+		update store set pid=#{pid},sid=#{sid},quantity=#{quantity} where id=#{id}
+	</update>
+</mapper>

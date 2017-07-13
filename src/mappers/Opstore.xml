@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.orilore.mapper.OpstoreMapper">
+	<resultMap type="Opstore" id="opstoreResultMap">
+		<id column="id" property="id"/>
+		<result column="indate" property="indate"/>
+		<result column="pid" property="pid"/>
+		<result column="sid" property="sid"/>
+		<result column="quantity" property="quantity"/>
+		<result column="person" property="person"/>
+		<result column="gread" property="gread"/>
+	</resultMap>
+	<select id="selectOne" parameterType="int" resultType="Opstore">
+		select * from opstore where id=#{id}
+	</select>
+	<select id="select" resultMap="opstoreResultMap">
+		select * from opstore
+	</select>
+	<insert id="insert" parameterType="Opstore">
+		insert into opstore(indate,pid,sid,quantity,person,gread) values(#{indate},#{pid},#{sid},#{quantity},#{person},#{gread})
+	</insert>
+	<delete id="delete" parameterType="int">
+		delete from opstore where id=#{id}
+	</delete>
+	<update id="update" parameterType="Opstore">
+		update opstore set indate=#{indate},pid=#{pid},sid=#{sid},quantity=#{quantity},person=#{person},gread=#{gread} where id=#{id}
+	</update>
+</mapper>
